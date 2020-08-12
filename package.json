@@ -14,7 +14,8 @@
     "express": "^4.17.1",
     "helmet": "^4.0.0",
     "jsonwebtoken": "^8.5.1",
-    "knex": "^0.21.4"
+    "knex": "^0.21.4",
+    "sqlite3": "^5.0.0"
   },
   "devDependencies": {
     "dotenv": "^8.2.0",
