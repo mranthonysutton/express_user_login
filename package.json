@@ -10,6 +10,7 @@
     "server": "nodemon index.js"
   },
   "dependencies": {
+    "@hapi/joi": "^17.1.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "helmet": "^4.0.0",
