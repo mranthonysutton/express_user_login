@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node index.js",
-    "server": "nodemon index.js"
+    "server": "nodemon -r dotenv/config index.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
