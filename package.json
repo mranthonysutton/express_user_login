@@ -6,8 +6,9 @@
   "author": "Anthony Sutton <anthony.sutton95@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node index.js",
-    "server": "nodemon -r dotenv/config index.js"
+    "start": "cross-env DB_ENV=production node index.js",
+    "server": "nodemon -r dotenv/config index.js",
+    "test": "cross-env DB_ENV=testing jest --watch"
   },
   "dependencies": {
     "@hapi/joi": "^17.1.1",
@@ -21,8 +22,14 @@
     "sqlite3": "^5.0.0"
   },
   "devDependencies": {
+    "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
     "eslit": "^6.0.0",
-    "nodemon": "^2.0.4"
+    "jest": "^26.4.0",
+    "nodemon": "^2.0.4",
+    "supertest": "^4.0.2"
+  },
+  "jest": {
+    "testingEnvironment": "node"
   }
 }
