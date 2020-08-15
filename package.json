@@ -7,8 +7,9 @@
   "license": "MIT",
   "scripts": {
     "start": "cross-env DB_ENV=production node index.js",
-    "server": "nodemon -r dotenv/config index.js",
-    "test": "cross-env DB_ENV=testing jest --watch"
+    "serve": "nodemon -r dotenv/config index.js",
+    "test": "cross-env DB_ENV=testing jest --watch",
+    "test:coverage": "cross-env DB_ENV=testing jest --coverage"
   },
   "dependencies": {
     "@hapi/joi": "^17.1.1",
@@ -30,6 +31,6 @@
     "supertest": "^4.0.2"
   },
   "jest": {
-    "testingEnvironment": "node"
+    "testEnvironment": "node"
   }
 }

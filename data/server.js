@@ -18,7 +18,6 @@ server.use('/', (req, res) => {
 });
 
 server.use('/', (error, req, res) => {
-  /* eslint-disable no-console */
   console.log(error);
   res.status(500).json({ error: 'Something went wrong', stack: error.stack });
 });
