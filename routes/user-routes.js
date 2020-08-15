@@ -1,12 +1,13 @@
-const express = require("express");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const router = express.Router();
-const Users = require("../models/user-models");
-const { validateUserCreation } = require("../middleware/schemaValidation");
-const { userAlreadyExists, foundUser } = require("../middleware/users");
+const express = require('express');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
-router.get("/", async (req, res, next) => {
+const router = express.Router();
+const Users = require('../models/user-models');
+const { validateUserCreation } = require('../middleware/schemaValidation');
+const { userAlreadyExists, foundUser } = require('../middleware/users');
+
+router.get('/', async (req, res, next) => {
   try {
     return res.json(await Users.getAllUsers());
   } catch (error) {
@@ -15,7 +16,7 @@ router.get("/", async (req, res, next) => {
 });
 
 router.post(
-  "/register",
+  '/register',
   validateUserCreation,
   userAlreadyExists,
   async (req, res, next) => {
@@ -29,18 +30,17 @@ router.post(
     } catch (error) {
       next(error);
     }
-  }
+  },
 );
 
-router.post("/login", foundUser, async (req, res, next) => {
+router.post('/login', foundUser, async (req, res, next) => {
   try {
     const validPassword = await bcrypt.compare(
       req.body.password,
-      req.foundUser.password
+      req.foundUser.password,
     );
 
-    if (!validPassword)
-      return res.status(404).json({ message: "Invalid credentials" });
+    if (!validPassword) return res.status(404).json({ message: 'Invalid credentials' });
 
     const token = await signToken(req.foundUser);
 
@@ -56,10 +56,10 @@ function signToken(user) {
     email: user.email,
   };
 
-  const secret = process.env.JWT_SECRET || "secretkey";
+  const secret = process.env.JWT_SECRET || 'secretkey';
 
   const options = {
-    expiresIn: "1d",
+    expiresIn: '1d',
   };
 
   return jwt.sign(payload, secret, options);

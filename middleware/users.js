@@ -1,13 +1,13 @@
-const db = require("../data/dbConfig");
+const db = require('../data/dbConfig');
 
 const userAlreadyExists = async (req, res, next) => {
   try {
-    const foundUser = await db("users")
+    const foundUser = await db('users')
       .where({ email: req.validUser.email })
       .first();
 
     if (foundUser)
-      return res.status(401).json({ message: "User already exists" });
+      return res.status(401).json({ message: 'User already exists' });
 
     next();
   } catch (error) {
@@ -17,12 +17,12 @@ const userAlreadyExists = async (req, res, next) => {
 
 const foundUser = async (req, res, next) => {
   try {
-    const foundUser = await db("users")
+    const foundUser = await db('users')
       .where({ email: req.body.email })
       .first();
 
     if (!foundUser)
-      return res.status(401).json({ message: "User does not exist" });
+      return res.status(401).json({ message: 'User does not exist' });
 
     req.foundUser = foundUser;
     next();

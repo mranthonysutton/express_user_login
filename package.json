@@ -17,14 +17,12 @@
     "helmet": "^4.0.0",
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.21.4",
+    "morgan": "^1.10.0",
     "sqlite3": "^5.0.0"
   },
   "devDependencies": {
     "dotenv": "^8.2.0",
-    "eslint": "^7.7.0",
-    "eslint-config-airbnb": "^18.2.0",
     "eslit": "^6.0.0",
-    "morgan": "^1.10.0",
     "nodemon": "^2.0.4"
   }
 }

@@ -1,4 +1,4 @@
-const Joi = require("@hapi/joi");
+const Joi = require('@hapi/joi');
 
 const userCreationSchema = Joi.object({
   email: Joi.string().email({ minDomainSegments: 2 }).required().trim(),
