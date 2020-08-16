@@ -30,17 +30,18 @@ router.post(
     } catch (error) {
       next(error);
     }
-  },
+  }
 );
 
 router.post('/login', foundUser, async (req, res, next) => {
   try {
     const validPassword = await bcrypt.compare(
       req.body.password,
-      req.foundUser.password,
+      req.foundUser.password
     );
 
-    if (!validPassword) return res.status(404).json({ message: 'Invalid credentials' });
+    if (!validPassword)
+      return res.status(404).json({ message: 'Invalid credentials' });
 
     const token = await signToken(req.foundUser);
 
