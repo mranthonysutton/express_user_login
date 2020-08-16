@@ -22,7 +22,7 @@ const foundUser = async (req, res, next) => {
       .first();
 
     if (!foundUser)
-      return res.status(401).json({ message: 'User does not exist' });
+      return res.status(404).json({ message: 'User does not exist' });
 
     req.foundUser = foundUser;
     next();

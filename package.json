@@ -8,7 +8,8 @@
   "scripts": {
     "start": "cross-env DB_ENV=production node index.js",
     "serve": "nodemon -r dotenv/config index.js",
-    "test": "cross-env DB_ENV=testing jest --watch",
+    "test": "cross-env DB_ENV=testing jest",
+    "test:watch": "cross-env DB_ENV=testing jest --watch",
     "test:coverage": "cross-env DB_ENV=testing jest --coverage"
   },
   "dependencies": {

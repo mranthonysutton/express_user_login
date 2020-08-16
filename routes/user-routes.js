@@ -41,7 +41,7 @@ router.post('/login', foundUser, async (req, res, next) => {
     );
 
     if (!validPassword)
-      return res.status(404).json({ message: 'Invalid credentials' });
+      return res.status(401).json({ message: 'Invalid credentials' });
 
     const token = await signToken(req.foundUser);
 
