@@ -81,6 +81,25 @@ describe('User Integration Tests', () => {
     });
   });
 
+  describe('POST /api/users/register (user already exists)', () => {
+    beforeAll(async () => {
+      response = await request(server)
+        .post('/api/users/register')
+        .send({ email: 'test@test.com', password: 'password123' });
+    });
+
+    it('Should return a 401 status code', async () => {
+      expect(response.statusCode).toBe(401);
+    });
+
+    it('Should return a message', async () => {
+      expect(response.body).toEqual({ message: 'User already exists' });
+    });
+
+    it('Should return a JSON object', async () => {
+      expect(response.type).toBe('application/json');
+    });
+  });
   describe('POST /api/users/login (valid)', () => {
     beforeAll(async () => {
       response = await request(server)
