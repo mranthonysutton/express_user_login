@@ -100,6 +100,7 @@ describe('User Integration Tests', () => {
       expect(response.type).toBe('application/json');
     });
   });
+
   describe('POST /api/users/login (valid)', () => {
     beforeAll(async () => {
       response = await request(server)
