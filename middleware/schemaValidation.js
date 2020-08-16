@@ -12,8 +12,7 @@ const validateUserCreation = async (req, res, next) => {
     req.validUser = result;
     next();
   } catch (error) {
-    console.log(error);
-    res.status(400).json({ error: error.details });
+    return res.status(400).json({ error: error.details[0].message });
   }
 };
 

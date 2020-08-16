@@ -18,7 +18,7 @@ server.use('/', (req, res) => {
 });
 
 server.use('/', (error, req, res) => {
-  console.log(error);
+  if (process.env.DB_ENV !== 'testing') console.log(error);
   res.status(500).json({ error: 'Something went wrong', stack: error.stack });
 });
 

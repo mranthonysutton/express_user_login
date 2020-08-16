@@ -56,6 +56,31 @@ describe('User Integration Tests', () => {
     });
   });
 
+  describe('POST /api/users/register (invalid)', () => {
+    let fakeUser = {};
+    beforeAll(async () => {
+      fakeUser = await {
+        email: faker.internet.email(),
+      };
+
+      response = await request(server)
+        .post('/api/users/register')
+        .send(fakeUser);
+    });
+
+    it('Should have a status code of 400', async () => {
+      expect(response.statusCode).toBe(400);
+    });
+
+    it('Should return an error', async () => {
+      expect(response.body.error.length).toBeGreaterThanOrEqual(1);
+    });
+
+    it('Should be a JSON object', async () => {
+      expect(response.type).toBe('application/json');
+    });
+  });
+
   describe('POST /api/users/login (valid)', () => {
     beforeAll(async () => {
       response = await request(server)
