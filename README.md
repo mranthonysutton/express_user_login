@@ -14,6 +14,7 @@
 - [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) - Generates [JWTs](https://jwt.io/)
 - [knex](https://www.npmjs.com/package/knex) - A batteries-included, multi-dialect (MSSQL, MySQL, PostgreSQL, SQLite3, Oracle (including Oracle Wallet Authentication)) query builder for Node.js
 - [morgan](https://www.npmjs.com/package/morgan) - HTTP request logger middleware for node.js -[SQLite3](https://www.npmjs.com/package/sqlite3) - DB used during development
+- [pg](https://www.npmjs.com/package/pg) - Non-blocking PostgreSQL client for Node.js. Pure JavaScript and optional native libpq bindings
 
 ### Development Utilities
 
