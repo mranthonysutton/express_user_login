@@ -1,5 +1,8 @@
 # Express User Registration Starter
 
+![GitHub followers](https://img.shields.io/github/followers/mranthonysutton?label=Follow&style=social)
+![Twitter Follow](https://img.shields.io/twitter/follow/mranthonysutton?style=social)
+
 ## Tech Used
 
 ### API Utilities
