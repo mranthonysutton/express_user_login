@@ -72,6 +72,6 @@ yarn serve
 | Type | Endpoint            | Token Required | Description                            |
 | ---- | ------------------- | -------------- | -------------------------------------- |
 | GET  | /                   | No             | Root route                             |
-| GET  | /api/users          | No             | List of all users                      |
+| GET  | /api/users          | Yes            | List of all users                      |
 | POST | /api/users/register | No             | Creates a new user                     |
 | POST | /api/users/login    | No             | Logins in the user based upon the body |

@@ -9,10 +9,23 @@ afterAll(async () => {
 
 describe('User Integration Tests', () => {
   let response = {};
-  describe('GET /api/users', () => {
+
+  describe('GET /api/users (valid)', () => {
+    // Re-run the seeds
+    // grab a token from a valid login request
+    // and send a get request using that auth token
     beforeAll(async () => {
       await db.seed.run();
-      response = await request(server).get('/api/users');
+
+      const loginUser = await request(server)
+        .post('/api/users/login')
+        .send({ email: 'test@test.com', password: 'password123' });
+
+      const token = loginUser.body.token;
+
+      response = await request(server)
+        .get('/api/users')
+        .set('Authorization', token);
     });
 
     it('Has status code 200', async () => {
@@ -25,6 +38,43 @@ describe('User Integration Tests', () => {
 
     it('Has length of 1 user', async () => {
       expect(response.body.length).toBe(1);
+    });
+  });
+
+  describe('GET /api/users (no token)', () => {
+    beforeAll(async () => {
+      response = await request(server).get('/api/users');
+    });
+
+    it('Has status code 401', async () => {
+      expect(response.statusCode).toBe(401);
+    });
+
+    it('Is a JSON response', async () => {
+      expect(response.type).toBe('application/json');
+    });
+
+    it('Has no token provided', async () => {
+      expect(response.body).toEqual({ message: 'No token provided' });
+    });
+  });
+
+  describe('GET /api/users (invalid token)', () => {
+    beforeAll(async () => {
+      response = await request(server)
+        .get('/api/users')
+        .set('Authorization', 'fake_token');
+    });
+    it('Has status code 401', async () => {
+      expect(response.statusCode).toBe(401);
+    });
+
+    it('Is a JSON response', async () => {
+      expect(response.type).toBe('application/json');
+    });
+
+    it('Has no token provided', async () => {
+      expect(response.body).toEqual({ message: 'Invalid token' });
     });
   });
 

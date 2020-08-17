@@ -4,6 +4,7 @@ const server = require('../data/server');
 describe('Server setup', () => {
   test('Environment setup', async () => {
     expect(process.env.DB_ENV).toBe('testing');
+    expect(process.env.JWT_SECRET).toBeDefined();
   });
 
   test('GET /', async () => {
