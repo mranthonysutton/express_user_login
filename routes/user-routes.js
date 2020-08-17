@@ -6,8 +6,9 @@ const router = express.Router();
 const Users = require('../models/user-models');
 const { validateUserCreation } = require('../middleware/schemaValidation');
 const { userAlreadyExists, foundUser } = require('../middleware/users');
+const { requireToken } = require('../middleware/authentication');
 
-router.get('/', async (req, res, next) => {
+router.get('/', requireToken, async (req, res, next) => {
   try {
     return res.json(await Users.getAllUsers());
   } catch (error) {

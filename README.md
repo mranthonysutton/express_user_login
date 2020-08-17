@@ -47,6 +47,16 @@ npm run test
 yarn test
 ```
 
+#### Coverage Reports
+
+```
+npm run test:coverage
+```
+
+```
+yarn test:coverage
+```
+
 ### Development
 
 ```
@@ -56,3 +66,12 @@ npm run serve
 ```
 yarn serve
 ```
+
+## Endpoints
+
+| Type | Endpoint            | Token Required | Description                            |
+| ---- | ------------------- | -------------- | -------------------------------------- |
+| GET  | /                   | No             | Root route                             |
+| GET  | /api/users          | No             | List of all users                      |
+| POST | /api/users/register | No             | Creates a new user                     |
+| POST | /api/users/login    | No             | Logins in the user based upon the body |
